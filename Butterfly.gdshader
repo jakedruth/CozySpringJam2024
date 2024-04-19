@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float flapSpeed = 4.0;
 uniform float flapStrength = 0.2;
+uniform float hashOffset;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -10,7 +11,7 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
 	vec2 uv = UV;
-	float t = sin(TIME * flapSpeed);
+	float t = sin(TIME * flapSpeed + hashOffset);
 	
 	float k = t * flapStrength;
 	uv.x = -k * abs(uv.y - 0.5) + uv.x;

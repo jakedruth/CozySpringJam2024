@@ -3,22 +3,29 @@ using System;
 
 public partial class Butterfly : CharacterBody2D
 {
+    [Export] CompressedTexture2D[] _textures;
     [Export] float _speed;
-    private Vector2 _direction;
+    [Export] float _acc;
+    [Export] public double _minChangeDirTime;
+    [Export] public double _maxChangeDirTime;
+    private double _changeDirTimer;
+
+    public Vector2 direction;
     Image image;
     byte[] data;
     double t;
 
     public override void _Ready()
     {
-        _direction = RandomUnitVector();
-        var texture = new NoiseTexture2D();
-        texture.Noise = new FastNoiseLite();
-        texture.Changed += () =>
-        {
-            image = texture.GetImage();
-            data = image.GetData();
-        };
+        Sprite2D sprite2D = GetChild<Sprite2D>(1);
+        sprite2D.Texture = _textures[GD.Randi() % _textures.Length];
+
+        ShaderMaterial material = sprite2D.Material as ShaderMaterial;
+        sprite2D.Material = material.Duplicate() as ShaderMaterial;
+        (sprite2D.Material as ShaderMaterial).SetShaderParameter("hashOffset", GD.Randf() * 6); // 6 is close enough to 2 pi
+
+        direction = RandomUnitVector();
+        Velocity = direction * _speed;
     }
 
     public override void _Process(double delta)
@@ -28,11 +35,32 @@ public partial class Butterfly : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Velocity = _direction * _speed;
+        const float bounds = 1000;
+        if (GlobalPosition.X < -bounds ||
+            GlobalPosition.X > bounds ||
+            GlobalPosition.Y < -bounds ||
+            GlobalPosition.Y > bounds)
+        {
+            CallDeferred("free");
+            return;
+        }
 
-        LookAt(Position + _direction);
+        _changeDirTimer -= delta;
+        if (_changeDirTimer <= 0)
+        {
+            ResetChangeDirectionTimer();
+            UpdateDirection();
+        }
 
+        Velocity = Velocity.MoveToward(direction * _speed, _acc * (float)delta);
+
+        LookAt(Position + Velocity.Normalized());
         MoveAndSlide();
+    }
+
+    private void UpdateDirection()
+    {
+        direction = (direction * 2 + RandomUnitVector()).Normalized();
     }
 
     private Vector2 RandomUnitVector(int maxAttempts = 3)
@@ -51,5 +79,10 @@ public partial class Butterfly : CharacterBody2D
         }
 
         return result.Normalized();
+    }
+
+    private void ResetChangeDirectionTimer()
+    {
+        _changeDirTimer = _minChangeDirTime + GD.Randf() * (_maxChangeDirTime - _minChangeDirTime);
     }
 }

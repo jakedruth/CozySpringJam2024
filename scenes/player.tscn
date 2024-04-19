@@ -1,12 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bv6yhcg5hpxql"]
+[gd_scene load_steps=20 format=3 uid="uid://bv6yhcg5hpxql"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_31gkj"]
 [ext_resource type="Texture2D" uid="uid://bogstqvg4mjlu" path="res://assets/player.png" id="2_hfb4r"]
 [ext_resource type="Texture2D" uid="uid://y0nw0tklea0q" path="res://assets/net.png" id="3_kxmh1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ud8vn"]
-radius = 4.0
-height = 16.0
+radius = 2.0
+height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nabvn"]
 size = Vector2(11, 14)
@@ -447,6 +447,14 @@ _data = {
 "swing_U": SubResource("Animation_a0kwe")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtg43"]
+bg_color = Color(0.721569, 0.2, 0.117647, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.392157, 0.105882, 0.101961, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quntj"]
 bg_color = Color(0.372549, 0.690196, 0.286275, 1)
 border_width_left = 1
@@ -456,9 +464,11 @@ border_width_bottom = 1
 border_color = Color(0.243137, 0.458824, 0.184314, 1)
 
 [sub_resource type="Theme" id="Theme_5m5xp"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_jtg43")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_quntj")
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 scale = Vector2(4, 4)
 collision_layer = 2
 motion_mode = 1
@@ -468,17 +478,20 @@ _runSpeed = 500.0
 _maxStamina = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+y_sort_enabled = true
+position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ud8vn")
 
 [node name="Body" type="Sprite2D" parent="."]
-z_index = 5
+y_sort_enabled = true
 texture = ExtResource("2_hfb4r")
 offset = Vector2(0, -8)
 flip_h = true
 
 [node name="Net" type="Sprite2D" parent="."]
+show_behind_parent = true
+y_sort_enabled = true
 position = Vector2(0, -8)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kxmh1")
@@ -489,7 +502,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Net/NetArea"]
-position = Vector2(1.5, 9.73537e-08)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_nabvn")
 
 [node name="BodyAnimationPlayer" type="AnimationPlayer" parent="."]
