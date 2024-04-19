@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Butterfly.cs" id="1_4r3of"]
 [ext_resource type="Shader" path="res://Butterfly.gdshader" id="2_2j00g"]
-[ext_resource type="Texture2D" uid="uid://h8pybngwwyvv" path="res://assets/bat.png" id="2_hvcir"]
+[ext_resource type="Texture2D" uid="uid://h8pybngwwyvv" path="res://assets/butterfly_01.png" id="2_hvcir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3yhx"]
 radius = 8.0
@@ -24,5 +24,4 @@ shape = SubResource("CircleShape2D_x3yhx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1je7p")
-rotation = 1.57079
 texture = ExtResource("2_hvcir")
