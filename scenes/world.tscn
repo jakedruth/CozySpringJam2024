@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dolg2johi73w4"]
+
+[ext_resource type="PackedScene" uid="uid://bv6yhcg5hpxql" path="res://scenes/player.tscn" id="1_phq8g"]
+[ext_resource type="PackedScene" uid="uid://b4g14eo6r3ij0" path="res://scenes/Butterfly.tscn" id="2_dja6n"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_phq8g")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(0.25, 0.25)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Butterfly" parent="." instance=ExtResource("2_dja6n")]
+position = Vector2(192, 0)
+_speed = 100.0

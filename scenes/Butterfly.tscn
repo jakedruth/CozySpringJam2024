@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4g14eo6r3ij0"]
+
+[ext_resource type="Script" path="res://scripts/Butterfly.cs" id="1_4r3of"]
+[ext_resource type="Shader" path="res://Butterfly.gdshader" id="2_2j00g"]
+[ext_resource type="Texture2D" uid="uid://h8pybngwwyvv" path="res://assets/bat.png" id="2_hvcir"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3yhx"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1je7p"]
+shader = ExtResource("2_2j00g")
+shader_parameter/flapSpeed = 10.0
+shader_parameter/flapStrength = 0.2
+
+[node name="Butterfly" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_4r3of")
+_speed = 400.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x3yhx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1je7p")
+rotation = 1.57079
+texture = ExtResource("2_hvcir")
