@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h8pybngwwyvv"
-path="res://.godot/imported/butterfly_01.png-00ceee0c1c71e943109b6f80f583eba8.ctex"
+uid="uid://dt7gfdtcuwkm7"
+path="res://.godot/imported/panel-border-000.png-9c22b7e1267780c827c1a1289461b30d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/butterfly_01.png"
-dest_files=["res://.godot/imported/butterfly_01.png-00ceee0c1c71e943109b6f80f583eba8.ctex"]
+source_file="res://assets/UI/panel-border-000.png"
+dest_files=["res://.godot/imported/panel-border-000.png-9c22b7e1267780c827c1a1289461b30d.ctex"]
 
 [params]
 

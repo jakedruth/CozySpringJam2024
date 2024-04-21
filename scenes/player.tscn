@@ -476,6 +476,7 @@ script = ExtResource("1_31gkj")
 _walkSpeed = 300.0
 _runSpeed = 500.0
 _maxStamina = 1.0
+_swingTime = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

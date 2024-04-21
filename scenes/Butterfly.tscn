@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://scripts/Butterfly.cs" id="1_4r3of"]
 [ext_resource type="Shader" path="res://Butterfly.gdshader" id="2_2j00g"]
-[ext_resource type="Texture2D" uid="uid://h8pybngwwyvv" path="res://assets/butterfly_01.png" id="2_hvcir"]
-[ext_resource type="Texture2D" uid="uid://ceqq3s4kf8iwp" path="res://assets/butterfly_02.png" id="3_x7b47"]
-[ext_resource type="Texture2D" uid="uid://th0fdnr2n6sy" path="res://assets/butterfly_03.png" id="4_wc2b1"]
-[ext_resource type="Texture2D" uid="uid://crfgfjidke8hl" path="res://assets/butterfly_04.png" id="5_26h6g"]
-[ext_resource type="Texture2D" uid="uid://cst1og6kpscvk" path="res://assets/butterfly_05.png" id="6_mnfbv"]
-[ext_resource type="Texture2D" uid="uid://c21b0e388k426" path="res://assets/butterfly_06.png" id="7_ndwof"]
-[ext_resource type="Texture2D" uid="uid://dudj0qihxx0aw" path="res://assets/butterfly_07.png" id="8_b4eem"]
-[ext_resource type="Texture2D" uid="uid://cixxpstl788pi" path="res://assets/butterfly_08.png" id="9_2233n"]
-[ext_resource type="Texture2D" uid="uid://cjqgm66jbrsbw" path="res://assets/butterfly_09.png" id="10_bmkym"]
+[ext_resource type="Texture2D" uid="uid://h8pybngwwyvv" path="res://assets/Butterflies/butterfly_01.png" id="2_yi55k"]
+[ext_resource type="Texture2D" uid="uid://ceqq3s4kf8iwp" path="res://assets/Butterflies/butterfly_02.png" id="3_unmth"]
+[ext_resource type="Texture2D" uid="uid://th0fdnr2n6sy" path="res://assets/Butterflies/butterfly_03.png" id="4_2ucp8"]
+[ext_resource type="Texture2D" uid="uid://crfgfjidke8hl" path="res://assets/Butterflies/butterfly_04.png" id="5_3p1t2"]
+[ext_resource type="Texture2D" uid="uid://cst1og6kpscvk" path="res://assets/Butterflies/butterfly_05.png" id="6_qyecw"]
+[ext_resource type="Texture2D" uid="uid://c21b0e388k426" path="res://assets/Butterflies/butterfly_06.png" id="7_lyxt8"]
+[ext_resource type="Texture2D" uid="uid://dudj0qihxx0aw" path="res://assets/Butterflies/butterfly_07.png" id="8_i36pu"]
+[ext_resource type="Texture2D" uid="uid://cixxpstl788pi" path="res://assets/Butterflies/butterfly_08.png" id="9_f6pyy"]
+[ext_resource type="Texture2D" uid="uid://cjqgm66jbrsbw" path="res://assets/Butterflies/butterfly_09.png" id="10_gnpsu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3yhx"]
 radius = 8.0
@@ -27,7 +27,7 @@ scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_4r3of")
-_textures = Array[CompressedTexture2D]([ExtResource("2_hvcir"), ExtResource("3_x7b47"), ExtResource("4_wc2b1"), ExtResource("5_26h6g"), ExtResource("6_mnfbv"), ExtResource("7_ndwof"), ExtResource("8_b4eem"), ExtResource("9_2233n"), ExtResource("10_bmkym")])
+_textures = Array[CompressedTexture2D]([ExtResource("2_yi55k"), ExtResource("3_unmth"), ExtResource("4_2ucp8"), ExtResource("5_3p1t2"), ExtResource("6_qyecw"), ExtResource("7_lyxt8"), ExtResource("8_i36pu"), ExtResource("9_f6pyy"), ExtResource("10_gnpsu")])
 _speed = 100.0
 _acc = 100.0
 _minChangeDirTime = 0.5
@@ -38,4 +38,4 @@ shape = SubResource("CircleShape2D_x3yhx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1je7p")
-texture = ExtResource("2_hvcir")
+texture = ExtResource("2_yi55k")

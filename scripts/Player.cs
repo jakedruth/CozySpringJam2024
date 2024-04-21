@@ -16,7 +16,8 @@ public partial class Player : CharacterBody2D
     private Vector2 _input;
     private Vector2 _lastFacing;
     private bool _isRunning;
-    private double _swingTime;
+    [Export] double _swingTime;
+    private double _swingTimer;
 
     public override void _Ready()
     {
@@ -36,11 +37,9 @@ public partial class Player : CharacterBody2D
             _lastFacing = _input;
 
         _isRunning = Input.IsActionPressed("run");
-        if (_swingTime <= 0 && Input.IsActionJustPressed("swing"))
-        {
-            _swingTime = 0.75;
+        if (_swingTimer <= 0 && Input.IsActionJustPressed("swing"))
             StartSwing();
-        }
+
 
         _progressBar.Value = _stamina / _maxStamina;
         _progressBar.Visible = _stamina != _maxStamina || _isRunning;
@@ -50,6 +49,7 @@ public partial class Player : CharacterBody2D
 
     private void StartSwing()
     {
+        _swingTimer = _swingTime;
         if (_lastFacing.X > 0)
             _netAnimationPlayer.Play("swing_R");
         else if (_lastFacing.X < 0)
@@ -72,8 +72,8 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_swingTime > 0)
-            _swingTime -= delta;
+        if (_swingTimer > 0)
+            _swingTimer -= delta;
 
         if (_isRunning && _input.LengthSquared() > 0)
             _stamina -= delta;
@@ -82,7 +82,7 @@ public partial class Player : CharacterBody2D
 
         _stamina = Mathf.Clamp(_stamina, 0, _maxStamina);
 
-        float speed = _swingTime > 0
+        float speed = _swingTimer > 0
             ? 0
             : _isRunning && _stamina > 0
                 ? _runSpeed

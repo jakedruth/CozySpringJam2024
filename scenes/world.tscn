@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dolg2johi73w4"]
+[gd_scene load_steps=9 format=3 uid="uid://dolg2johi73w4"]
 
+[ext_resource type="Script" path="res://scripts/LevelHandler.cs" id="1_oa4ux"]
 [ext_resource type="PackedScene" uid="uid://bv6yhcg5hpxql" path="res://scenes/player.tscn" id="1_phq8g"]
 [ext_resource type="PackedScene" uid="uid://b4g14eo6r3ij0" path="res://scenes/Butterfly.tscn" id="2_dja6n"]
 [ext_resource type="Texture2D" uid="uid://hbr6jj1i4pl2" path="res://assets/tilemap_packed.png" id="3_t4x2k"]
 [ext_resource type="Script" path="res://scripts/ButterflySpawner.cs" id="4_4xocc"]
+[ext_resource type="PackedScene" uid="uid://fcskvo7xrp68" path="res://scenes/PauseMenu.tscn" id="4_hrmsl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eel3d"]
 texture = ExtResource("3_t4x2k")
@@ -535,8 +537,10 @@ terrain_set_0/terrain_0/name = "DirtPath"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_eel3d")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("pauseMenu")]
 y_sort_enabled = true
+script = ExtResource("1_oa4ux")
+pauseMenu = NodePath("Camera2D/PauseMenu")
 
 [node name="Player" parent="." instance=ExtResource("1_phq8g")]
 
@@ -561,6 +565,15 @@ layer_2/z_index = -5
 layer_2/navigation_enabled = false
 layer_2/tile_data = PackedInt32Array(917489, 0, 0, 983025, 65536, 0, 917490, 0, 0, 983026, 0, 0, 917491, 0, 0, 983027, 65536, 0, 917492, 0, 0, 983028, 65536, 0, 917493, 0, 0, 983029, 65536, 0, 917494, 0, 0, 983030, 0, 0, 917495, 0, 0, 983031, 0, 0, 917496, 0, 0, 983032, 0, 0, 917497, 0, 0, 983033, 65536, 0, 917498, 0, 0, 983034, 0, 0, 917499, 0, 0, 983035, 0, 0, 917500, 0, 0, 983036, 0, 0, 917501, 0, 0, 983037, 65536, 0, 917502, 0, 0, 983038, 0, 0, 917503, 0, 0, 983039, 0, 0, 851968, 0, 0, 917504, 65536, 0, 851969, 0, 0, 917505, 0, 0, 851970, 0, 0, 917506, 0, 0, 851971, 0, 0, 917507, 65536, 0, 851972, 0, 0, 917508, 0, 0, 851973, 0, 0, 917509, 65536, 0, 851974, 0, 0, 917510, 65536, 0, 851975, 0, 0, 917511, 0, 0, 851976, 0, 0, 917512, 0, 0, 851977, 0, 0, 917513, 0, 0, 851978, 0, 0, 917514, 0, 0, 851979, 0, 0, 917515, 65536, 0, 851980, 0, 0, 917516, 0, 0, 851981, 0, 0, 917517, 65536, 0, 851982, 65536, 0, 917518, 65536, 0, -983027, 65536, 0, -917491, 0, 0, -851955, 0, 0, -786419, 0, 0, -720883, 0, 0, -655347, 0, 0, -589811, 0, 0, -524275, 0, 0, -458739, 0, 0, -393203, 0, 0, -327667, 0, 0, -262131, 0, 0, -196595, 0, 0, -131059, 0, 0, -65523, 0, 0, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196621, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0, 655373, 0, 0, 720909, 0, 0, 786445, 0, 0, -983026, 0, 0, -917490, 65536, 0, -851954, 65536, 0, -786418, 65536, 0, -720882, 65536, 0, -655346, 0, 0, -589810, 65536, 0, -524274, 65536, 0, -458738, 0, 0, -393202, 0, 0, -327666, 0, 0, -262130, 0, 0, -196594, 0, 0, -131058, 0, 0, -65522, 65536, 0, 14, 65536, 0, 65550, 65536, 0, 131086, 65536, 0, 196622, 0, 0, 262158, 0, 0, 327694, 0, 0, 393230, 0, 0, 458766, 65536, 0, 524302, 65536, 0, 589838, 65536, 0, 655374, 65536, 0, 720910, 65536, 0, 786446, 0, 0, -917519, 0, 0, -851983, 65536, 0, -917518, 0, 0, -851982, 0, 0, -917517, 0, 0, -851981, 0, 0, -917516, 65536, 0, -851980, 0, 0, -917515, 0, 0, -851979, 0, 0, -917514, 65536, 0, -851978, 0, 0, -917513, 0, 0, -851977, 0, 0, -917512, 65536, 0, -851976, 0, 0, -917511, 0, 0, -851975, 0, 0, -917510, 0, 0, -851974, 0, 0, -917509, 0, 0, -851973, 0, 0, -917508, 65536, 0, -851972, 0, 0, -917507, 0, 0, -851971, 0, 0, -917506, 65536, 0, -851970, 0, 0, -917505, 0, 0, -851969, 0, 0, -983040, 65536, 0, -917504, 0, 0, -983039, 0, 0, -917503, 0, 0, -983038, 65536, 0, -917502, 0, 0, -983037, 0, 0, -917501, 0, 0, -983036, 65536, 0, -917500, 0, 0, -983035, 65536, 0, -917499, 0, 0, -983034, 0, 0, -917498, 0, 0, -983033, 0, 0, -917497, 0, 0, -983032, 65536, 0, -917496, 0, 0, -983031, 65536, 0, -917495, 0, 0, -983030, 0, 0, -917494, 0, 0, -983029, 0, 0, -917493, 0, 0, -983028, 65536, 0, -917492, 0, 0, -786447, 0, 0, -720911, 65536, 0, -655375, 65536, 0, -589839, 0, 0, -524303, 65536, 0, -458767, 0, 0, -393231, 65536, 0, -327695, 65536, 0, -262159, 0, 0, -196623, 0, 0, -131087, 0, 0, -65551, 65536, 0, -15, 65536, 0, 65521, 65536, 0, 131057, 0, 0, 196593, 65536, 0, 262129, 65536, 0, 327665, 65536, 0, 393201, 65536, 0, 458737, 0, 0, 524273, 65536, 0, 589809, 0, 0, 655345, 65536, 0, 720881, 65536, 0, 786417, 65536, 0, -786446, 0, 0, -720910, 0, 0, -655374, 0, 0, -589838, 0, 0, -524302, 0, 0, -458766, 0, 0, -393230, 0, 0, -327694, 0, 0, -262158, 0, 0, -196622, 0, 0, -131086, 0, 0, -65550, 0, 0, -14, 0, 0, 65522, 0, 0, 131058, 0, 0, 196594, 0, 0, 262130, 0, 0, 327666, 0, 0, 393202, 0, 0, 458738, 0, 0, 524274, 0, 0, 589810, 0, 0, 655346, 0, 0, 720882, 0, 0, 786418, 0, 0, 851953, 65536, 0, 851954, 0, 0)
 
+[node name="Label" type="Label" parent="TileMap"]
+offset_left = -64.0
+offset_top = -86.0
+offset_right = 67.0
+offset_bottom = -11.0
+text = "WASD - Move
+J - Swing Net
+K or Shift - Sprint"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -960
 limit_top = -960
@@ -569,11 +582,21 @@ limit_bottom = 960
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.15
-drag_top_margin = 0.15
-drag_right_margin = 0.15
-drag_bottom_margin = 0.15
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
 editor_draw_limits = true
+
+[node name="PauseMenu" parent="Camera2D" node_paths=PackedStringArray("levelHandler") instance=ExtResource("4_hrmsl")]
+visible = false
+z_index = 100
+offset_left = -485.0
+offset_top = -360.0
+offset_right = 485.0
+offset_bottom = 360.0
+pivot_offset = Vector2(485, 360)
+levelHandler = NodePath("../..")
 
 [node name="Butterfly" parent="." instance=ExtResource("2_dja6n")]
 position = Vector2(192, 0)

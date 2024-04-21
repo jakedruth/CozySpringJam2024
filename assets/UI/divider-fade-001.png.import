@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crfgfjidke8hl"
-path="res://.godot/imported/butterfly_04.png-c54c9d8f437dc4fe8fb19cf2a1c846dc.ctex"
+uid="uid://duhioh6vv2y1g"
+path="res://.godot/imported/divider-fade-001.png-e3297ca4c683a9363b31bfcc76ef5837.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/butterfly_04.png"
-dest_files=["res://.godot/imported/butterfly_04.png-c54c9d8f437dc4fe8fb19cf2a1c846dc.ctex"]
+source_file="res://assets/UI/divider-fade-001.png"
+dest_files=["res://.godot/imported/divider-fade-001.png-e3297ca4c683a9363b31bfcc76ef5837.ctex"]
 
 [params]
 
